@@ -1,0 +1,9 @@
+from django.conf.urls import url
+from blog.views import IndexView, AboutMeView, TestBlogView
+
+
+urlpatterns = [
+    url(r'^$', IndexView.as_view(), name='index'),
+    url(r'^about_me/', AboutMeView.as_view(), name='about_me'),
+    url(r'^test_blog/', TestBlogView.as_view(), name='about_me')
+]
