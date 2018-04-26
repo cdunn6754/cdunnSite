@@ -2,18 +2,18 @@ from django.shortcuts import render
 from django.views.generic import TemplateView,CreateView
 from django.shortcuts     import redirect
 
-from blog.models import Blog, BlogUser
-from blog.forms  import UserForm, BlogUserForm
+from blogUser.models import Blog, BlogUser
+from blogUser.forms  import UserForm, BlogUserForm
 
 # Create your views here.
 class IndexView(TemplateView):
-    template_name = 'blog/blog_index.html'
+    template_name = 'blogUser/blog_index.html'
 
 class AboutMeView(TemplateView):
-    template_name = 'blog/about_me.html'
+    template_name = 'blogUser/about_me.html'
 
 class TestBlogView(TemplateView):
-    template_name = 'blog/test_blog.html'
+    template_name = 'blogUser/test_blog.html'
 
 def createUser(request):
     if request.method == "POST":
@@ -29,7 +29,7 @@ def createUser(request):
             blogUser = blog_user_form.save(commit=False)
             blogUser.user = user
             blogUser.save()
-            return redirect("blog:index")
+            return redirect("blogUser:index")
         else:
             print(user_form.errors, profile_form.errors)
     else:
@@ -37,7 +37,7 @@ def createUser(request):
         blog_user_form = BlogUserForm()
     return render(
         request,
-        "blog/bloguser_create_form.html",
+        "blogUser/bloguser_create_form.html",
         {
             'user_form' : user_form,
             'blog_user_form': blog_user_form
