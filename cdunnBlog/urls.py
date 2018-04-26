@@ -16,7 +16,10 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from blogPost.views import blogIndex
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('blogUser.urls',namespace='blogUser')),
+    url(r'^$', blogIndex, name='blog_index'),
+    url(r'^users/', include('blogUser.urls',namespace='blogUser')),
 ]
