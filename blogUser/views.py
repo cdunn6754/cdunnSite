@@ -9,6 +9,9 @@ from blogUser.forms  import UserForm
 class TestBlogView(TemplateView):
     template_name = 'blogUser/test_blog.html'
 
+class LoginUserView(TemplateView):
+    template_name = 'blogUser/login_user.html'
+
 def createUser(request):
     if request.method == "POST":
         user_form = UserForm(request.POST)
