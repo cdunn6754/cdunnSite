@@ -21,6 +21,11 @@ from blogPost.views import blogIndex
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', TemplateView.as_view(template_name="static_html/main_index.html"), name='main_index'),
+    url(r'^$',
+        TemplateView.as_view(template_name="static_html/main_index.html"),
+         name='main_index'),
+    url(r'^about_me$',
+        TemplateView.as_view(template_name="static_html/about_me.html"),
+        name = "about_me"),
     url(r'^users/', include('blogUser.urls',namespace='blogUser')),
 ]

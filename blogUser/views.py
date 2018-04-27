@@ -6,12 +6,6 @@ from blogUser.models import BlogUser
 from blogUser.forms  import UserForm
 
 # Create your views here.
-class IndexView(TemplateView):
-    template_name = 'blogUser/blog_index.html'
-
-class AboutMeView(TemplateView):
-    template_name = 'blogUser/about_me.html'
-
 class TestBlogView(TemplateView):
     template_name = 'blogUser/test_blog.html'
 
