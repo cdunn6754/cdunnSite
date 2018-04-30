@@ -6,8 +6,4 @@ from blogUser.models import BlogUser
 class UserForm(ModelForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email']
-
-# class BlogUserForm(ModelForm):
-#     class Meta:
-#         model = BlogUser
+        fields = ['username', 'first_name', 'last_name', 'email', 'password']

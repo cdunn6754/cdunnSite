@@ -24,7 +24,7 @@ def createUser(request):
 
             blogUser = BlogUser(user=user)
             blogUser.save()
-            return redirect("blogUser:index")
+            return redirect("main_index")
         else:
             print(user_form.errors, profile_form.errors)
     else:

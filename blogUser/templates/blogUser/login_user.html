@@ -2,5 +2,11 @@
 
 {% block body_block %}
 
-  <h2>Login here !</h2>
+  <h2>Please Login</h2>
+
+  <form method="POST"> {% csrf_token %}
+    {{ form.as_p }}
+    <input class type="submit" value="Login">
+  </form>
+
 {% endblock %}
