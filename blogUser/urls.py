@@ -10,9 +10,14 @@ urlpatterns = [
     url(r'^create_user/', createUser, name='create_user'),
     url(r'^login_user/', auth_views.LoginView.as_view
             (
-                template_name = "blogUser/login_user.html",
-                extra_context = {"next":"main_index"}
+                template_name = "blogUser/login_user.html"
             ),
             name="login_user"
+        ),
+    url(r'^logout_user/', auth_views.LogoutView.as_view
+            (
+                template_name = "blogUser/logout_user.html"
+            ),
+            name="logout_user"
         ),
 ]

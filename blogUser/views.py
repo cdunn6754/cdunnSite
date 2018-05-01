@@ -26,7 +26,7 @@ def createUser(request):
             blogUser.save()
             return redirect("main_index")
         else:
-            print(user_form.errors, profile_form.errors)
+            print(user_form.errors)
     else:
         user_form = UserForm()
     return render(
