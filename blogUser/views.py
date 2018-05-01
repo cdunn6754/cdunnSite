@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView,CreateView
-from django.shortcuts     import redirect
+from django.shortcuts import redirect
 
 from blogUser.models import BlogUser
 from blogUser.forms  import UserForm
