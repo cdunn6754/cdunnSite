@@ -2,8 +2,9 @@
 
 {% block body_block %}
 
-  <h2>Please Login</h2>
-
+  <div class="jumbotron">
+      <h2>Please Login</h2>
+  </div>
   <form method="POST"> {% csrf_token %}
     {{ form.as_p }}
     <input class type="submit" value="Login">

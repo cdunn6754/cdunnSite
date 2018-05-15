@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
 
-from blogUser.views import (TestBlogView, LoginUserView, createUser)
+from blogUser.views import (TestBlogView, createUser)
 
 
 
