@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 class BlogUser(models.Model):
     user = models.OneToOneField(
         User,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name="BlogUser"
         )
 
     # I want to make the functionality to allow
