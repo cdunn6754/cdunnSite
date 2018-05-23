@@ -1,5 +1,5 @@
 from django.db import models
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
 from blogUser.models import BlogUser
 
@@ -11,7 +11,10 @@ class BlogPost(models.Model):
         null = True
     )
 
+    title = models.CharField(max_length = 250)
+
     user_markdown = models.TextField()
 
     def get_absolute_url(self):
-        return reverse('main_index')
+        return reverse('blogPost:blogPostDetail', args=(self.pk,))
+            #'blogPost:blogPostDetail', args=(self.pk))

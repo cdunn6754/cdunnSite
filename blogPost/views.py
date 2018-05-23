@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 
 from blogPost.models import BlogPost
 
@@ -18,3 +19,8 @@ class BlogPostDetailView(DetailView):
 
     model = BlogPost
     template_name = "blogPost/blog_post_detail.html"
+
+class BlogPostListView(ListView):
+
+    model = BlogPost
+    template_name = "blogPost/blog_post_list.html"
