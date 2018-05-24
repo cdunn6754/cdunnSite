@@ -6,7 +6,8 @@
 
 <ul>
   {% for post in object_list %}
-    <p> <a href="{{ post.get_absolute_url }}"> {{ post.title}} </a> </p>
+    <p> <a href="{{ post.get_absolute_url }}"> {{ post.title}} </a> <br>
+    by: {{post.author.user.username}}</p>
   {% empty %}
     <p>No posts yet.</p>
   {% endfor %}
