@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block body_block %}
+
+  <!-- Page Header -->
+  {% load staticfiles %}
+  <div class="container">
+        <img src="{% static "images/smiling.jpg" %}" class="img-fluid" alt="Not Found">
+  </div>
+
+
+
+  <h1>Main Index</h1>
+  <p>Hello {{ user.username }} !</p>
+  <p>Your blogPoster status is {{ user.blogUser.blogPoster }}</p>
+{% endblock %}

@@ -4,12 +4,20 @@
 
 <h1> Blog View</h1>
 
-<ul>
+<ul class="list-group">
   {% for post in object_list %}
-    <p> <a href="{{ post.get_absolute_url }}"> {{ post.title}} </a> <br>
-    by: {{post.author.user.username}}</p>
+
+    <div>
+      <a href="{{ post.get_absolute_url }}"> {{ post.title}} </a>
+    </div>
+
+    <div>
+      by: {{post.author.user.username}}</p>
+    </div>
   {% empty %}
-    <p>No posts yet.</p>
+      <p>No posts yet.</p>
+
+
   {% endfor %}
 </ul>
 

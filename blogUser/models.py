@@ -6,7 +6,7 @@ class BlogUser(models.Model):
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
-        related_name="BlogUser"
+        related_name="blogUser"
         )
 
     # I want to make the functionality to allow
