@@ -7,8 +7,7 @@ from blogUser.models import BlogUser
 class BlogPost(models.Model):
     author = models.ForeignKey(
         BlogUser,
-        on_delete=models.SET_NULL,
-        null = True
+        on_delete=models.CASCADE
     )
 
     title = models.CharField(max_length = 250)
@@ -17,4 +16,16 @@ class BlogPost(models.Model):
 
     def get_absolute_url(self):
         return reverse('blogPost:blogPostDetail', args=(self.pk,))
-            #'blogPost:blogPostDetail', args=(self.pk))
+
+class BlogPostComment(models.Model):
+    blog_post = models.ForeignKey(
+        BlogPost,
+        on_delete=models.CASCADE
+    )
+
+    author = models.ForeignKey(
+        BlogUser,
+        on_delete=models.CASCADE
+    )
+
+    comment_body = models.CharField(max_length = 1000)
