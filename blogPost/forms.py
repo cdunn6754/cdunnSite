@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 
-from blogPost.models import BlogPost
+from blogPost.models import BlogPost, BlogComment
 
 class BlogPostForm(ModelForm):
     template_name = "blogPost/blog_post_form.html"
@@ -10,3 +10,9 @@ class BlogPostForm(ModelForm):
     class Meta:
         model = BlogPost
         fields = ['title']
+
+class BlogCommentForm(ModelForm):
+
+    class Meta:
+        model = BlogComment
+        fields = ['comment_body',]

@@ -13,7 +13,7 @@ class BlogUser(models.Model):
     # people to make blog posts
     # but I think that I will only let most people write comments
     # so this defaults to False
-    blogPoster = models.BooleanField(default=False)
+    blogPoster = models.BooleanField(default=True) ## SET TRUE for debugging
 
     # Same thing but for people to make comments
     # the default here is to allow it

@@ -17,7 +17,7 @@ class BlogPost(models.Model):
     def get_absolute_url(self):
         return reverse('blogPost:blogPostDetail', args=(self.pk,))
 
-class BlogPostComment(models.Model):
+class BlogComment(models.Model):
     blog_post = models.ForeignKey(
         BlogPost,
         on_delete=models.CASCADE

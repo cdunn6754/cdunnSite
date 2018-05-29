@@ -27,4 +27,9 @@
   {{ object.user_markdown | safe }}
 </p>
 
+<form method="POST"> {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Post Comment">
+</form>
+
 {% endblock %}
