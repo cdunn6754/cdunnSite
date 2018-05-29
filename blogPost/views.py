@@ -52,10 +52,19 @@ class BlogPostDetailView(FormMixin, DetailView):
     def form_valid(self, form):
         form.instance.author = self.request.user.blogUser
         form.instance.blog_post = self.object
+        return super(BlogPostDetailView, self).form_valid(form)
 
     # want to reload this page after success
     def get_success_url(self):
-        return reverse_lazy('blogPost:blogPostDetail', args=(self.object.pk))
+        return reverse('blogPost:blogPostDetail', args=(self.object.pk,))
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
 
 class BlogPostListView(ListView):
 
