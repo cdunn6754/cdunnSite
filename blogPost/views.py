@@ -52,6 +52,7 @@ class BlogPostDetailView(FormMixin, DetailView):
     def form_valid(self, form):
         form.instance.author = self.request.user.blogUser
         form.instance.blog_post = self.object
+        form.save()
         return super(BlogPostDetailView, self).form_valid(form)
 
     # want to reload this page after success
