@@ -28,4 +28,9 @@ class BlogComment(models.Model):
         on_delete=models.CASCADE
     )
 
+    date_created = models.DateField(auto_now_add=True)
+
+    date_modified = models.DateField(auto_now=True)
+
+    # TODO rename to body
     comment_body = models.CharField(max_length = 1000)

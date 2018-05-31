@@ -8,7 +8,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django import forms
 
-from blogPost.models import BlogPost
+from blogPost.models import BlogPost, BlogComment
 from blogPost.forms import BlogPostForm, BlogCommentForm
 
 # Create your views here.
@@ -37,16 +37,19 @@ class BlogCreateView(CreateView):
             form.instance.user_markdown = form.cleaned_data['temp_markdown_file'].read()
         return super().form_valid(form)
 
-# class BlogPostDetailView(DetailView):
-#
-#     model = BlogPost
-#     template_name = "blogPost/blog_post_detail.html"
 
 class BlogPostDetailView(FormMixin, DetailView):
 
     model = BlogPost
     form_class = BlogCommentForm
     template_name = "blogPost/blog_post_detail.html"
+
+
+    # get the comments to display below the post
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["comments"] = BlogComment.objects.filter(blog_post=self.object).order_by("date_created")
+        return context
 
     # Set the author and blog_post automatically
     def form_valid(self, form):
