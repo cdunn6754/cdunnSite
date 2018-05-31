@@ -15,4 +15,4 @@ class BlogCommentForm(ModelForm):
 
     class Meta:
         model = BlogComment
-        fields = ['comment_body',]
+        fields = ['body',]

@@ -33,4 +33,4 @@ class BlogComment(models.Model):
     date_modified = models.DateField(auto_now=True)
 
     # TODO rename to body
-    comment_body = models.CharField(max_length = 1000)
+    body = models.CharField(max_length = 1000)
