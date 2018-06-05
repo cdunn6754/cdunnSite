@@ -13,6 +13,11 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
 
+  {% load staticfiles %}
+
+  <!-- Reply Icon -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 {% endblock %}
 
 
@@ -37,10 +42,25 @@
 
 <br>
 {% for comment in comments %}
-  <p>{{ comment.comment_body }}</p>
-  by: 
-    <a href="{% url 'landing_page' %} ">{{ comment.author.user.username}}</a>
-  on {{comment.date_created}}.
+<div class="container">
+  <div class="row">
+    <h3 class="mb-2">Comments</h3>
+    <!-- COMMENT -->
+    <div class="comment row shadow-lg p-3 mb-500 bg-light rounded">
+      <div class="comment-avatar col-md-1 col-sm-2 text-center pr-1 ">
+        <a href="{% url 'landing_page'%}"><img class="mx-auto rounded-circle img-fluid" src="{% static 'images/smiling.jpg' %}" alt="No Pippin!"></a>
+      </div>
+      <div class="comment-content col-md-11 col-sm-10">
+        <h6 class="small comment-meta"><a href="#">{{ comment.author.user.username}}</a> {{comment.date_created}}</h6>
+        <div class="comment-body">
+          <p>{{comment.body}}</p>
+          <br>
+          <a class="text-right small" href="#"><i class="material-icons" style="font-size:15px">reply</i>Reply</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endfor %}
 
 {% endblock %}
