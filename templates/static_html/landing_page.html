@@ -5,13 +5,39 @@
 
   <!-- Page Header -->
   {% load staticfiles %}
+  <!--
   <div class="container">
         <img src="{% static "images/smiling.jpg" %}" class="img-fluid" alt="Not Found" height="80" width="80">
   </div>
+  -->
 
+  <div class="jumbotron bg-white d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <h1>Welcome,</h1>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-8">
+          <h4>
+            Here you can find some hopefully useful examples and
+            tutorials on a variety of subjects, mostly centered around
+            Python and C++ development.
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
 
+    <div class="row">
+      <div class="col-4 offset-sm-8">
+        <h3>About Me</h3>
+      </div>
+    </div>
 
-  <h1>Main Index</h1>
-  <p>Hello {{ user.username }} !</p>
-  <p>Your blogPoster status is {{ user.blogUser.blogPoster }}</p>
+  <div class="container">
+
+  </div>
+
 {% endblock %}
