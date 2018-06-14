@@ -14,30 +14,42 @@
   <div class="jumbotron bg-white d-flex align-items-center">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-10">
-          <h1>Welcome,</h1>
+        <div class="col-8">
+          <h2>Welcome</h2>
         </div>
       </div>
-      <div class="row justify-content-center">
-        <div class="col-8">
+      <div class="row ">
+        <div class="col-2">
+
+        </div>
+        <div class="col-6">
           <h4>
-            Here you can find some hopefully useful examples and
-            tutorials on a variety of subjects, mostly centered around
-            Python and C++ development.
+            to my personal site,
+            here you can find some, hopefully useful, examples and
+            tutorials on a variety of subjects. It is mostly centered around
+            Python and C++ development in various engineering applications.
           </h4>
         </div>
       </div>
     </div>
   </div>
 
-    <div class="row">
-      <div class="col-4 offset-sm-8">
-        <h3>About Me</h3>
+
+
+  <div class="container-fluid ">
+    <div class="row justify-content-center">
+      <div class="col-9">
+
+      </div>
+      <div class="col-3 bg-light">
+        <h3><a href="{% url 'about_me'%}">About Me:</a></h3>
+        <h5>
+            Im currently an M.E. Grad student, very interested in making the
+            the switch to software engineering by leveraging my scientific
+            computing Python and C++ experience.
+        </h5>
       </div>
     </div>
-
-  <div class="container">
-
   </div>
 
 {% endblock %}
