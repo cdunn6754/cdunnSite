@@ -74,3 +74,8 @@ class BlogPostListView(ListView):
 
     model = BlogPost
     template_name = "blogPost/blog_post_list.html"
+
+class LandingPageView(ListView):
+
+    model = BlogPost
+    template_name = "blogPost/landing_page.html"
