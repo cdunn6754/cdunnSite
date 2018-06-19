@@ -1,22 +1,28 @@
 from django.db import models
 
 # Create your models here.
-class contentPost(models.Model):
+
+class ContentTopic(models.Model):
+
+    name = models.CharField(max_length = 100)
+    description = models.CharField(max_length = 500)
+
+    def __str__(self):
+        return "ContentTopic: {}".format(self.name)
+
+class ContentPost(models.Model):
 
     title = models.CharField(max_length = 250)
     description = models.CharField(max_length = 500)
 
     body = models.TextField()
 
-    image = models.ImageField(upload_to="contentPostImages")
+    image = models.ImageField(upload_to="ContentPostImages")
 
     creation_date = models.DateField(auto_now_add=True)
     date_modified = models.DateField(auto_now=True)
 
-    contentTopics = models.ManyToManyField(contentTopic)
+    contentTopics = models.ManyToManyField(ContentTopic)
 
-
-class contentTopic(models.Model):
-
-    name = models.CharField(max_length = 100)
-    description = models.CharField(max_length = 500)
+    def __str__(self):
+        return "ContentPost: {}".format(self.title)
