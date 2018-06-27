@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
+from django.conf import settings
+from django.conf.urls.static import static
 
-from blogPost.views import LandingPageView
+from content.views import LandingPageView
 
 
 urlpatterns = [
@@ -28,4 +30,4 @@ urlpatterns = [
         name = "about_me"),
     url(r'^users/', include('blogUser.urls', namespace='blogUser')),
     url(r'^posts/', include('blogPost.urls', namespace='blogPost')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -24,5 +24,8 @@ class ContentPost(models.Model):
 
     contentTopics = models.ManyToManyField(ContentTopic)
 
+    def get_absolute_url(self):
+        return reverse('blogPost:blogPostDetail', args=(self.pk,))
+
     def __str__(self):
         return "ContentPost: {}".format(self.title)
