@@ -3,7 +3,7 @@ from django.contrib.auth import views as auth_views
 
 from blogUser.views import (TestBlogView, createUser)
 
-
+app_name='blogUser'
 
 urlpatterns = [
     url(r'^test_blog/', TestBlogView.as_view(), name='test'),
