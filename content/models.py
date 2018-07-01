@@ -24,6 +24,8 @@ class ContentPost(models.Model):
 
     contentTopics = models.ManyToManyField(ContentTopic)
 
+    slug = models.SlugField(max_length=200, unique=True)
+
     def get_absolute_url(self):
         return reverse('blogPost:blogPostDetail', args=(self.pk,))
 

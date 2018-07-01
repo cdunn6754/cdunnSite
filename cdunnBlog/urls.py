@@ -31,4 +31,5 @@ urlpatterns = [
         name = "about_me"),
     url(r'^users/', include('blogUser.urls', namespace='blogUser')),
     url(r'^posts/', include('blogPost.urls', namespace='blogPost')),
+    url(r'^content/', include('content.urls', namespace='content')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

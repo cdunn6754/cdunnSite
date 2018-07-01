@@ -51,7 +51,7 @@
       <div class="media">
         <img class=" align-self-center mr-3" src="{{post.image.url}}" width=100 alt="Not Found">
         <div class="media-body">
-          <a href="#">
+          <a href="{% url 'content:post_detail' slug=post.slug %}">
             <h5 class="mt-0"> {{post.title}} </h5>
           </a>
           {{post.description}}
