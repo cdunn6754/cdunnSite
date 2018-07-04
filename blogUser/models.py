@@ -20,4 +20,7 @@ class BlogUser(models.Model):
     commentPoster = models.BooleanField(default=True)
 
     def __str__(self):
-        return ("{} {}".format(self.user.first_name,  self.user.last_name))
+        if (self.user.first_name and self.user.last_name):
+            return ("{} {}".format(self.user.first_name,  self.user.last_name))
+        elif (self.user.username):
+            return ("{}".format(self.user.username))
