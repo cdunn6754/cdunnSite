@@ -91,6 +91,3 @@ db.sqlite3
 ## EMACS stuff
 *~
 #*#
-
-## migrations
-migrations/
