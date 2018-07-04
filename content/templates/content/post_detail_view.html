@@ -3,7 +3,10 @@
 {% block body_block %}
 
   <div class="container">
-
+    <div class="jumbotron text-center" >
+      <h1>{{contentpost.title}}</h1>
+    </div>
+    <br>
     {{contentpost.body|safe}}
   </div>
 
