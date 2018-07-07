@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
+{% block head_block %}
+
+<!-- The css from tutorialzine.com for listing the articles-->
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/lists/article-list-vertical.css'%}">
+
+{% endblock %}
+
 
 {% block body_block %}
 
@@ -29,10 +37,10 @@
             Python and C++ development in various engineering applications.
           </h4>
         </div>
-        <div class="col-2">
+        <div class="col-1">
 
         </div>
-        <div class="col-2 bg-light">
+        <div class="col-3 bg-light">
           <h3><a href="{% url 'about_me'%}">About Me:</a></h3>
           <h5>
               Im currently an M.E. Grad student, very interested in making the
@@ -47,16 +55,21 @@
 
   <div class="container">
 
+    <h3 class='article-list-vertical-header'>Most recent content posts:</h3>
+
+    <br>
+
     {% for post in object_list  %}
-      <div class="media">
-        <img class=" align-self-center mr-3" src="{{post.image.url}}" width=100 alt="Not Found">
-        <div class="media-body">
-          <a href="{% url 'content:post_detail' slug=post.slug %}">
-            <h5 class="mt-0"> {{post.title}} </h5>
-          </a>
-          {{post.description}}
-        </div>
-      </div>
+      <ul class='article-list-vertical'>
+        <li>
+          <a href="{% url 'content:post_detail' slug=post.slug %}" style="background-image: url('{{post.image.url}}')"></a>
+          <div>
+            <h2><a href="#">{{post.title}}</a></h2>
+            <p>{{post.description}}</p>
+            <a href="{% url 'content:post_detail' slug=post.slug %}" class="read-more">read more</a>
+          </div>
+        </li>
+      </ul>
     {% endfor %}
 
   </div>
