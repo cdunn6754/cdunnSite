@@ -91,3 +91,9 @@ db.sqlite3
 ## EMACS stuff
 *~
 #*#
+
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
