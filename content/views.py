@@ -13,4 +13,8 @@ class LandingPageView(ListView):
 
 class ContentPostDetailView(DetailView):
     model = ContentPost
-    template_name = "content/post_detail_view.html"
+    template_name = "content/post_detail.html"
+
+class ContentPostListView(ListView):
+    model = ContentPost
+    template_name = "content/post_list.html"
