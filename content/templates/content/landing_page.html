@@ -5,7 +5,11 @@
 <!-- The css from tutorialzine.com for listing the articles-->
 {% load staticfiles %}
 <link rel="stylesheet" href="{% static 'css/lists/article-list-vertical.css'%}">
+<link rel="stylesheet" href="{% static 'css/landing_page.css'%}">
 
+<!-- Nicer font -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:500|Raleway" rel="stylesheet">
 {% endblock %}
 
 
@@ -18,44 +22,28 @@
         <img src="{% static "images/smiling.jpg" %}" class="img-fluid" alt="Not Found" height="80" width="80">
   </div>
   -->
-
+<div class="container-fluid top-text">
   <div class="jumbotron bg-white d-flex align-items-center">
-    <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-8">
-        </div>
       </div>
-      <div class="row ">
-        <div class="col-2">
-
-        </div>
-        <div class="col-6">
-          <h4>
+      <div class="row">
+        <div class="col-12">
+          <h2 class='montserrat'>Hi, I'm Clint</h2>
+          <h4 class='welcome'>
             Welcome to my personal site,
-            here you can find some, hopefully useful, examples and
-            tutorials on a variety of subjects. It is mostly centered around
-            Python and C++ development in various engineering applications.
+            here you can find some articles and
+            tutorials centered around Python and C++ development.
           </h4>
         </div>
-        <div class="col-1">
-
-        </div>
-        <div class="col-3 bg-light">
-          <h3><a href="{% url 'about_me'%}">About Me:</a></h3>
-          <h5>
-              Im currently an M.E. Grad student, very interested in making the
-              the switch to software engineering by leveraging my scientific
-              computing Python and C++ experience.
-          </h5>
-        </div>
       </div>
-    </div>
   </div>
+</div>
 
+  <div class="container-fluid">
 
-  <div class="container">
-
-    <h3 class='article-list-vertical-header'>Most recent content posts:</h3>
+    <h3 class='article-list-vertical-header montserrat'>
+      Most recent content posts:
+    </h3>
 
     <br>
 
@@ -65,6 +53,13 @@
           <a href="{% url 'content:post_detail' slug=post.slug %}" style="background-image: url('{{post.image.url}}')"></a>
           <div>
             <h2><a href="#">{{post.title}}</a></h2>
+            <h3>created: {{post.creation_date}};
+               modified: {{post.date_modified}};
+               topics:
+                        {% for topic in post.contentTopics.all %}
+                          {{topic.name}},
+                        {% endfor %}
+            </h3>
             <p>{{post.description}}</p>
             <a href="{% url 'content:post_detail' slug=post.slug %}" class="read-more">read more</a>
           </div>

@@ -1,0 +1,18 @@
+/* text container on top of landing page */
+.top-text{
+  list-style:none;
+  margin: 0 auto;
+  max-width: 850px;
+  text-align: center;
+  padding: 0;
+}
+
+/* landing page fonts and colors*/
+.montserrat{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.welcome{
+  font-family: "Raleway", sans-serif;
+  color: #6e8087;
+}
