@@ -9,19 +9,26 @@
 {% block body_block %}
 
   <div class="container">
-    <h1>List em up buddy:</h1>
+    <h1>Posts:</h1>
   </div>
   {% for post in object_list  %}
-    <ul class='article-list-vertical'>
-      <li>
-        <a href="{% url 'content:post_detail' slug=post.slug %}" style="background-image: url('{{post.image.url}}')"></a>
-        <div>
-          <h2><a href="#">{{post.title}}</a></h2>
-          <p>{{post.description}}</p>
-          <a href="{% url 'content:post_detail' slug=post.slug %}" class="read-more">read more</a>
-        </div>
-      </li>
-    </ul>
+      <ul class='article-list-vertical'>
+        <li>
+          <a href="{% url 'content:post_detail' slug=post.slug %}" style="background-image: url('{{post.image.url}}')"></a>
+          <div>
+            <h2><a href="#">{{post.title}}</a></h2>
+            <h3>created: {{post.creation_date}};
+               modified: {{post.date_modified}};
+               topics:
+                        {% for topic in post.contentTopics.all %}
+                          {{topic.name}},
+                        {% endfor %}
+            </h3>
+            <p>{{post.description}}</p>
+            <a href="{% url 'content:post_detail' slug=post.slug %}" class="read-more">read more</a>
+          </div>
+        </li>
+      </ul>
   {% endfor %}
 
 {% endblock %}
