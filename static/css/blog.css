@@ -1,3 +1,10 @@
 body{
   padding-top: 65px;
 }
+
+
+/* Pandoc adds the class figure around the images.*/
+.figure > img {
+  max-width: 98%;
+  max-height: 100%;
+}
