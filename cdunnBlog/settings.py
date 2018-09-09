@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
+import cdunnBlog.localsettings as localsettings
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
@@ -23,7 +25,8 @@ LOGIN_REDIRECT_URL = "/"
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+o_4*ctv$#^zekegfwia$&h8w3@(k$^8l5=gs3$%c(uujm3d@)'
+SECRET_KEY = localsettings.SECRET_KEY
+#'+o_4*ctv$#^zekegfwia$&h8w3@(k$^8l5=gs3$%c(uujm3d@)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
