@@ -19,13 +19,8 @@ class ContentPostDetailView(DetailView):
     def get_context_data(self, **kwargs):
 
         context=super(ContentPostDetailView, self).get_context_data(**kwargs)
-
-        # t = Template(context['contentpost'].body)
-        # c = Context(context)
-        # rendered_body = t.render(c)
-        # context['rendered_body'] = rendered_body
-
-        context["file_name"] = "content/ec2_post.html"
+        slug = context["contentpost"].slug
+        context["post_file_path"] = "content/post_html/{}.html".format(slug)
 
         return context
 
