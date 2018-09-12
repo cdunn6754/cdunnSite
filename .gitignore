@@ -94,6 +94,10 @@ db.sqlite3
 *~
 #*#
 
+## Deployment configuration
+cdunnSite_uwsgi.ini
+cdunnSite_nginx.conf
+uwsgi_params
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
