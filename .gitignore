@@ -86,7 +86,7 @@ __pycache__/
 local_settings.py
 localsettings.py
 media/
-post_html/*
+post_html/
 static/images/*
 
 .env
