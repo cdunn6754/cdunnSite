@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
+# Local settings, to facilitate production and developement git branches
 import cdunnSite.localsettings as localsettings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = localsettings.BASE_DIR
 TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
 
 
@@ -26,12 +27,11 @@ LOGIN_REDIRECT_URL = "/"
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = localsettings.SECRET_KEY
-#'+o_4*ctv$#^zekegfwia$&h8w3@(k$^8l5=gs3$%c(uujm3d@)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = localsettings.DEBUG
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = localsettings.ALLOWED_HOSTS
 
 
 # Application definition
@@ -81,12 +81,7 @@ WSGI_APPLICATION = 'cdunnSite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+DATABASES = localsettings.DATABASES
 
 
 # Password validation
@@ -125,13 +120,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+STATICFILES_DIRS = localsettings.STATICFILES_DIRS
 
-STATIC_URL = '/static/'
+STATIC_URL = localsettings.STATIC_URL
 
 ## Media files
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = localsettings.MEDIA_ROOT
 
-MEDIA_URL = "/media/"
+MEDIA_URL = localsettings.MEDIA_URL
