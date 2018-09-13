@@ -88,6 +88,7 @@ localsettings.py
 media/
 post_html/
 static/images/*
+staticfiles/
 
 .env
 db.sqlite3
