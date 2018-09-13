@@ -122,6 +122,8 @@ USE_TZ = True
 
 STATICFILES_DIRS = localsettings.STATICFILES_DIRS
 
+STATIC_ROOT = localsettings.STATIC_ROOT
+
 STATIC_URL = localsettings.STATIC_URL
 
 ## Media files
