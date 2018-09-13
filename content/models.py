@@ -15,7 +15,7 @@ class ContentPost(models.Model):
     title = models.CharField(max_length = 250)
     description = models.CharField(max_length = 500)
 
-    body = models.TextField()
+    gist_link = models.URLField()
 
     image = models.ImageField(upload_to="ContentPostImages")
 
@@ -26,8 +26,8 @@ class ContentPost(models.Model):
 
     slug = models.SlugField(max_length=200, unique=True)
 
-    def get_absolute_url(self):
-        return reverse('blogPost:blogPostDetail', args=(self.pk,))
+    # def get_absolute_url(self):
+    #     return reverse('blogPost:blogPostDetail', args=(self.pk,))
 
     def __str__(self):
         return "ContentPost: {}".format(self.title)
