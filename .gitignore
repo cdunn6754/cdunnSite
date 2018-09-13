@@ -89,6 +89,7 @@ media/
 post_html/
 static/images/*
 staticfiles/
+migrations/
 
 .env
 db.sqlite3
