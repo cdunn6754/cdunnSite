@@ -15,9 +15,9 @@ class ContentPost(models.Model):
     title = models.CharField(max_length = 250)
     description = models.CharField(max_length = 500)
 
-    gist_link = models.URLField()
+    heading_image = models.ImageField(upload_to="heading_images")
+    template_file = models.FileField(upload_to="heading_images")
 
-    image = models.ImageField(upload_to="ContentPostImages")
 
     creation_date = models.DateField(auto_now_add=True)
     date_modified = models.DateField(auto_now=True)

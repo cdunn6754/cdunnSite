@@ -22,6 +22,15 @@ class ContentPostDetailView(DetailView):
         slug = context["contentpost"].slug
         context["post_file_path"] = "content/post_html/{}.html".format(slug)
 
+        # Get path to the correct template file and store so it can be
+        # included in post_detail template
+        template_file = "media/{}".format(context["contentpost"].template_file)
+        with open(template_file,'rt') as f:
+            file_content = f.read()
+
+        context["post_template"]=Template(file_content)
+
+
         return context
 
 
