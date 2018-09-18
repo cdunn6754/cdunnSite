@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
@@ -19,7 +20,7 @@ class ContentPost(models.Model):
     template_file = models.FileField(upload_to="heading_images")
 
 
-    creation_date = models.DateField(auto_now_add=True)
+    creation_date = models.DateField(default=timezone.now)
     date_modified = models.DateField(auto_now=True)
 
     contentTopics = models.ManyToManyField(ContentTopic)
