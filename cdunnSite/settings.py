@@ -13,10 +13,10 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 
 # Local settings, to facilitate production and developement git branches
-import cdunnSite.localsettings as localsettings
+import cdunnSite.localsettings as ls
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = localsettings.BASE_DIR
+BASE_DIR = ls.BASE_DIR
 TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
 
 
@@ -26,12 +26,12 @@ LOGIN_REDIRECT_URL = "/"
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = localsettings.SECRET_KEY
+SECRET_KEY = ls.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = localsettings.DEBUG
+DEBUG = ls.DEBUG
 
-ALLOWED_HOSTS = localsettings.ALLOWED_HOSTS
+ALLOWED_HOSTS = ls.ALLOWED_HOSTS
 
 
 # Application definition
@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'cdunnSite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = localsettings.DATABASES
+DATABASES = ls.DATABASES
 
 
 # Password validation
@@ -120,13 +120,30 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATICFILES_DIRS = localsettings.STATICFILES_DIRS
+STATICFILES_DIRS = ls.STATICFILES_DIRS
 
-STATIC_ROOT = localsettings.STATIC_ROOT
+STATIC_ROOT = ls.STATIC_ROOT
 
-STATIC_URL = localsettings.STATIC_URL
+STATIC_URL = ls.STATIC_URL
 
 ## Media files
-MEDIA_ROOT = localsettings.MEDIA_ROOT
+MEDIA_ROOT = ls.MEDIA_ROOT
 
-MEDIA_URL = localsettings.MEDIA_URL
+MEDIA_URL = ls.MEDIA_URL
+
+## Security Settings
+
+# Prevent MIME type sniffing, lock content type header
+SECURE_CONTENT_TYPE_NOSNIFF = ls.SECURE_CONTENT_TYPE_NOSNIFF
+
+# turn on xss attack filtering
+SECURE_BROWSER_XSS_FILTER = ls.SECURE_BROWSER_XSS_FILTER
+
+SESSION_COOKIE_SECURE = ls.SESSION_COOKIE_SECURE
+
+CRSF_COOKIE_SECURE = ls.CRSF_COOKIE_SECURE
+
+X_FRAME_OPTIONS = ls.X_FRAME_OPTIONS
+
+# Nginx is configured to reroute to HTTPS
+SECURE_SSL_REDIRECT = ls.SECURE_SSL_REDIRECT
