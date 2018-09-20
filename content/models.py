@@ -17,7 +17,7 @@ class ContentPost(models.Model):
     description = models.CharField(max_length = 500)
 
     heading_image = models.ImageField(upload_to="heading_images")
-    template_file = models.FileField(upload_to="heading_images")
+    template_file = models.FileField(upload_to="template_files")
 
 
     creation_date = models.DateField(default=timezone.now)
