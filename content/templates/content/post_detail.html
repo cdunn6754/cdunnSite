@@ -19,16 +19,32 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
 
+  {% load staticfiles%}
+  <link rel="stylesheet" href="{% static 'css/detail_page.css'%}">
+
 {% endblock %}
 
 {% block body_block %}
 
-  <div class="container">
-    <div class="jumbotron text-center" >
-      <h1>{{contentpost.title}}</h1>
+<div class="container">
+  <div class="main-container">
+    <div class="title-text">
+      <h1 class="montserrat">{{contentpost.title}}:</h1>
     </div>
+
+    <div class="post-info">
+      Hiya
+    </div>
+
+    <hr class="hr-style">
+
     <br>
-    {% include  post_template %}
+    <br>
+
+    <div class="main-text">
+      {% include  post_template %}
+    </div>
   </div>
+</div>
 
 {% endblock %}
