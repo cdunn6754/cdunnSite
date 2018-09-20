@@ -11,7 +11,7 @@
   <div class="container">
     <h1>Posts:</h1>
   </div>
-  {% for post in object_list  %}
+  {% for post in ordered_posts  %}
       <ul class='article-list-vertical'>
         <li>
           <a href="{% url 'content:post_detail' slug=post.slug %}" style="background-image: url('{{post.heading_image.url}}')"></a>

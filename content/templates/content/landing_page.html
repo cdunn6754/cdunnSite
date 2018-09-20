@@ -44,7 +44,7 @@
 
     <br>
 
-    {% for post in object_list  %}
+    {% for post in limited_ordered_posts  %}
       <ul class='article-list-vertical'>
         <li>
           <a href="{% url 'content:post_detail' slug=post.slug %}" style="background-image: url('{{post.heading_image.url}}')"></a>

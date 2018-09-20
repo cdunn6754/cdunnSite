@@ -12,13 +12,20 @@ class LandingPageView(ListView):
     model = ContentPost
     template_name = "content/landing_page.html"
 
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        ordered_queryset = ContentPost.objects.order_by("-creation_date")
+        context['ordered_posts'] = ordered_queryset
+        context['limited_ordered_posts'] = ordered_queryset[:4]
+        return context
+
 class ContentPostDetailView(DetailView):
     model = ContentPost
     template_name = "content/post_detail.html"
 
     def get_context_data(self, **kwargs):
 
-        context=super(ContentPostDetailView, self).get_context_data(**kwargs)
+        context=super().get_context_data(**kwargs)
         slug = context["contentpost"].slug
         context["post_file_path"] = "content/post_html/{}.html".format(slug)
 
@@ -34,6 +41,6 @@ class ContentPostDetailView(DetailView):
         return context
 
 
-class ContentPostListView(ListView):
+class ContentPostListView(LandingPageView):
     model = ContentPost
     template_name = "content/post_list.html"
