@@ -1,5 +1,5 @@
 .entire-page{
-  width: 850px;
+  max-width: 900px;
 }
 
 /* text container on top of landing page */
@@ -24,7 +24,8 @@ img{
 }
 
 .main-text{
-  font-size: 1.3em;
+  font-size: 1.1em;
+  word-spacing: 1.2;
 }
 
 /*Style for the horizontal bar */
