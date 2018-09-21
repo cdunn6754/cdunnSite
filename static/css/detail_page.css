@@ -1,19 +1,21 @@
+.entire-page{
+  width: 850px;
+}
+
 /* text container on top of landing page */
 .title-text{
   list-style:none;
   margin: 0 auto;
-  max-width: 850px;
   text-align: center;
   padding: 0;
 }
 
-
-.montserrat{
-  font-family: 'Montserrat', sans-serif;
-}
-
-.welcome{
-  font-family: "Raleway", sans-serif;
+img{
+  max-width: 110%;
+  max-height: 100%;
+  padding:1px;
+  border:1px solid #021a40;
+  background-color: black;
 }
 
 .post-info{
@@ -22,9 +24,10 @@
 }
 
 .main-text{
-  font-size: 1.2em;
+  font-size: 1.3em;
 }
 
+/*Style for the horizontal bar */
 .hr-style{
   overflow: visible; /* For IE */
   padding: 0;

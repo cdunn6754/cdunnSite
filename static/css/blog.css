@@ -1,10 +1,12 @@
+/* Avoid running into the navbar*/
 body{
   padding-top: 65px;
 }
 
+.montserrat{
+  font-family: 'Montserrat', sans-serif;
+}
 
-/* Pandoc adds the class figure around the images.*/
-.figure > img {
-  max-width: 98%;
-  max-height: 100%;
+.raleway{
+  font-family: "Raleway", sans-serif;
 }
