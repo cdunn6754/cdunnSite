@@ -30,7 +30,7 @@
         <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="{% url 'landing_page' %}">Clint Dunn</a>
+        <a class="navbar-brand raleway" href="{% url 'landing_page' %}">Clint Dunn</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,14 +38,14 @@
           <ul class="navbar-nav mr-auto">
 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle raleway" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Content
               </a>
               <div class="dropdown-menu" aria-labelledby = "navbarDropdown">
-                <a class="dropdown-item" href="{% url 'content:post_list' %}">
+                <a class="dropdown-item raleway" href="{% url 'content:post_list' %}">
                   Articles
                 </a>
-                <a class="dropdown-item" href="{% static 'dunn_thesis_final.pdf' %}">
+                <a class="dropdown-item raleway" href="{% static 'dunn_thesis_final.pdf' %}">
                   Thesis
                 </a>
               </div>
@@ -53,7 +53,7 @@
 
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-item nav-link active" href="{% url 'about_me' %}">About Me</a>
+              <a class="nav-item nav-link active raleway" href="{% url 'about_me' %}">About Me</a>
             </li>
           </ul>
         </div>
