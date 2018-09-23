@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.urls.base import reverse
 
 # Create your models here.
 
@@ -27,8 +28,8 @@ class ContentPost(models.Model):
 
     slug = models.SlugField(max_length=200, unique=True)
 
-    # def get_absolute_url(self):
-    #     return reverse('blogPost:blogPostDetail', args=(self.pk,))
+    def get_absolute_url(self):
+        return reverse('content:post_detail', kwargs={'slug': self.slug})
 
     def __str__(self):
         return "ContentPost: {}".format(self.title)
