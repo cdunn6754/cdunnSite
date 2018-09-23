@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.template import Template, Context
-
+from django.conf import settings
 
 from content.models import ContentPost
 
@@ -26,8 +26,6 @@ class ContentPostDetailView(DetailView):
     def get_context_data(self, **kwargs):
 
         context=super().get_context_data(**kwargs)
-        slug = context["contentpost"].slug
-        context["post_file_path"] = "content/post_html/{}.html".format(slug)
 
         # Get path to the correct template file and store so it can be
         # included in post_detail template
@@ -36,7 +34,6 @@ class ContentPostDetailView(DetailView):
             file_content = f.read()
 
         context["post_template"]=Template(file_content)
-
 
         return context
 
