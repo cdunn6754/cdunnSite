@@ -1,0 +1,30 @@
+.entire-page{
+  max-width: 800px;
+}
+
+.main-text{
+  font-size: 1.1em;
+  word-spacing: 1.2;
+}
+
+
+/*Style for the horizontal bar */
+.hr-style{
+  overflow: visible; /* For IE */
+  padding: 0;
+  border: none;
+  border-top: medium double #333;
+  color: #333;
+  text-align: center;
+}
+
+.link-buttons-container{
+  text-align: center;
+}
+
+.link-buttons, .link-buttons:hover{
+  max-width: 50px;
+  padding: 5px 5px 5px 5px;
+  outline: none;
+  background-color: white;
+}

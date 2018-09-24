@@ -1,11 +1,76 @@
 {% extends "base.html" %}
 
+{% block head_block %}
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/about_me.css' %}">
+{% endblock %}
+
 {% block body_block %}
 
-  <h1>About Me:</h1>
+<div class="entire-page">
 
-  <div class="container montserrat">
-    Hi I'm Clint.
+  <h1 class='raleway'>About</h1>
+  <hr class='hr-style'>
+
+  <div class="container-fluid montserrat main-text">
+    Hi there, my name is Clint Dunn, I'm a mechanical and software engineer from
+    the United States. I have just finished my M.S. degree in
+    mechanical engineering and am now excited to be switching gears to
+    focus fully on software developement.
+    <br>
+    <br>
+    My research focused on modeling reactive multiphase flows in computational
+    fluid dynamics (CFD).
+    Particularly we were interested in incorporating a more robust treatment
+    of energetic and chemical coupling in pulverized coal furnace modeling. If
+    you are into that kind of thing you should check out my
+    <a href="{% static 'dunn_thesis_final.pdf' %}">thesis</a>.
+    <br>
+    <br>
+    For our modeling work we primarly used an opensource CFD toobox,
+    <a href="openfoam.org">OpenFOAM</a>. OpenFOAM is written in C++ and provided
+    me with an excellent, although at first somewhat overwhelming,
+    introduction to
+    the world of opensource software engineering. Python was also used heavily
+    in my research for data analysis, lighter simulations, post and pre
+    processing simulations results and general scripting.
+    <br>
+    <br>
+    Since finishing my masters
+    I have been spending a lot of time developing websites using
+    Django; writing about various Python and Django related topics and
+    becoming involved in freelance software engineering.
+
+    I am currently seeking fulltime employment in Python software engineering,
+    if you are interested in getting a hold of me please reach out through
+    any of the links below.
   </div>
+  <br>
+
+  <h1 class='raleway'>Contact</h1>
+
+  <hr class='hr-style'>
+
+  <div class="container-fluid montserrat main-text">
+    Please feel free to shoot me an email at clint@clintdunn.org or
+    hit me up at any of the links below.
+  </div>
+
+  <div class="link-buttons-container">
+    <a href="https://github.com/cdunn6754" title="github">
+      <img class="link-buttons" src="{% static 'images/website_links/GitHub.png' %}" alt="github">
+    </a>
+    <a href="https://www.linkedin.com/in/clint--dunn/" title="linked in">
+      <img class="link-buttons" src="{% static 'images/website_links/linked_in.png' %}" alt="Linked In">
+    </a>
+    <a href="https://stackoverflow.com/users/5063421/c6754?tab=profile" title="stack overflow">
+      <img class="link-buttons" src="{% static 'images/website_links/stack_overflow.png' %}" alt="Stack Overflow">
+    </a>
+  </div>
+
+</div>
+
+<br>
+
 
 {% endblock %}
