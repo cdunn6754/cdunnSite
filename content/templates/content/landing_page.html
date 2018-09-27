@@ -57,7 +57,11 @@
                   <span class="post-labels">
                     Topics:
                     {% for topic in post.contentTopics.all %}
+                      {% if not forloop.last%}
                       {{topic.name}},
+                      {% else %}
+                      {{topic.name}}
+                      {% endif %}
                     {% endfor %}
                   </span>
                 </div>
