@@ -4,16 +4,17 @@
 
 <!-- The css from tutorialzine.com for listing the articles-->
 {% load staticfiles %}
-<link rel="stylesheet" href="{% static 'css/lists/article-list-vertical.css'%}">
 <link rel="stylesheet" href="{% static 'css/landing_page.css'%}">
+<link rel="stylesheet" href="{% static 'css/lists/article_list.css'%}">
 
 {% endblock %}
 
 
 {% block body_block %}
 
-  <!-- Page Header -->
   {% load staticfiles %}
+
+  <!-- Page Header -->
 <div class="container-fluid top-text">
   <div class="jumbotron bg-white d-flex align-items-center">
       <div class="row justify-content-center">
@@ -31,34 +32,34 @@
   </div>
 </div>
 
-  <div class="container-fluid">
+  <div class="container-fluid article-list">
 
-    <h3 class='article-list-vertical-header montserrat'>
+    <h3 class='article-list-header montserrat'>
       Most recent articles:
     </h3>
 
     <br>
 
-    {% for post in limited_ordered_posts  %}
-      <ul class='article-list-vertical'>
-        <li>
-          <a href="{% url 'content:post_detail' slug=post.slug %}" style="background-image: url('{{post.heading_image.url}}')"></a>
-          <div>
-            <h2><a href="#">{{post.title}}</a></h2>
-            <h3>created: {{post.creation_date}};
-               modified: {{post.date_modified}};
-               topics:
-                        {% for topic in post.contentTopics.all %}
-                          {{topic.name}},
-                        {% endfor %}
-            </h3>
-            <p>{{post.description}}</p>
-            <a href="{% url 'content:post_detail' slug=post.slug %}" class="read-more">read more</a>
-          </div>
-        </li>
-      </ul>
-    {% endfor %}
+    <div class="row justify-content-md-center">
+      <div class="col-md-10">
+        {% for post in limited_ordered_posts  %}
+          <div class="card">
+            <img class="card-img-top" src="{{post.heading_image.url}}" alt="Article Image">
+            <div class="card-body">
+              <h3 class="card-title article-title montserrat">{{post.title}}</h3>
+              <p>
 
+              </p>
+              <p class="card-text raleway">
+                {{post.description}}
+              </p>
+              <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+
+        {% endfor %}
+      </div>
+    </div>
   </div>
 
 
