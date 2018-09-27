@@ -3,32 +3,50 @@
 {% block head_block %}
 
   {% load staticfiles %}
-  <link rel="stylesheet" href="{% static 'css/lists/article-list-vertical.css'%}">
+  <link rel="stylesheet" href="{% static 'css/lists/article_list.css'%}">
 {% endblock %}
 
 {% block body_block %}
 
-  <div class="container article-list-vertical-header montserrat">
-    <h1>Articles:</h1>
-  </div>
-  {% for post in ordered_posts  %}
-      <ul class='article-list-vertical'>
-        <li>
-          <a href="{% url 'content:post_detail' slug=post.slug %}" style="background-image: url('{{post.heading_image.url}}')"></a>
-          <div>
-            <h2><a href="#">{{post.title}}</a></h2>
-            <h3>created: {{post.creation_date}};
-               modified: {{post.date_modified}};
-               topics:
-                        {% for topic in post.contentTopics.all %}
-                          {{topic.name}},
-                        {% endfor %}
-            </h3>
-            <p>{{post.description}}</p>
-            <a href="{% url 'content:post_detail' slug=post.slug %}" class="read-more">read more</a>
+
+  <div class="container-fluid article-list">
+
+    <h3 class="article-list-header"> Articles: </h3>
+    <hr>
+
+
+    <div class="row justify-content-md-center ">
+
+      <div class="col-md-10">
+        {% for post in limited_ordered_posts  %}
+          <div class="card">
+            <img class="card-img-top" src="{{post.heading_image.url}}" alt="Article Image">
+            <div class="card-body">
+              <h3 class="card-title article-title montserrat">{{post.title}}</h3>
+                <div class="post-header">
+                  <span class="post-author vcard">
+                    Posted by Clint Dunn
+                  </span>
+                  <span class="post-timestamp">
+                    on {{post.creation_date}};
+                  </span>
+                  <span class="post-labels">
+                    Topics:
+                    {% for topic in post.contentTopics.all %}
+                      {{topic.name}},
+                    {% endfor %}
+                  </span>
+                </div>
+              <p class="card-text montserrat">
+                {{post.description}}
+              </p>
+              <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Read More</a>
+            </div>
           </div>
-        </li>
-      </ul>
-  {% endfor %}
+
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 
 {% endblock %}

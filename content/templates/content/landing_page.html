@@ -14,23 +14,23 @@
 
   {% load staticfiles %}
 
-  <!-- Page Header -->
-<div class="container-fluid top-text">
-  <div class="jumbotron bg-white d-flex align-items-center">
-      <div class="row justify-content-center">
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <h2 class='montserrat'>Hi, I'm Clint</h2>
-          <h4 class='welcome'>
-            Welcome to my personal site,
-            here you can find some articles and
-            tutorials centered around Python and C++ development.
-          </h4>
+    <!-- Page Header -->
+  <div class="container-fluid top-text">
+    <div class="jumbotron bg-white d-flex align-items-center">
+        <div class="row justify-content-center">
         </div>
-      </div>
+        <div class="row">
+          <div class="col-12">
+            <h2 class='montserrat'>Hi there, i'm Clint</h2>
+            <h4 class='welcome'>
+              Welcome to my personal site,
+              here you can find some articles and
+              tutorials centered around Python and C++ development.
+            </h4>
+          </div>
+        </div>
+    </div>
   </div>
-</div>
 
   <div class="container-fluid article-list">
 
@@ -38,7 +38,7 @@
       Most recent articles:
     </h3>
 
-    <br>
+    <hr>
 
     <div class="row justify-content-md-center">
       <div class="col-md-10">
@@ -47,10 +47,21 @@
             <img class="card-img-top" src="{{post.heading_image.url}}" alt="Article Image">
             <div class="card-body">
               <h3 class="card-title article-title montserrat">{{post.title}}</h3>
-              <p>
-
-              </p>
-              <p class="card-text raleway">
+                <div class="post-header">
+                  <span class="post-author vcard">
+                    Posted by Clint Dunn
+                  </span>
+                  <span class="post-timestamp">
+                    on {{post.creation_date}};
+                  </span>
+                  <span class="post-labels">
+                    Topics:
+                    {% for topic in post.contentTopics.all %}
+                      {{topic.name}},
+                    {% endfor %}
+                  </span>
+                </div>
+              <p class="card-text montserrat">
                 {{post.description}}
               </p>
               <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Read More</a>
