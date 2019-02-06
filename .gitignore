@@ -88,6 +88,8 @@ localsettings.py
 media/
 post_html/
 static/images/*
+!static/images/website_link_icons/
+
 staticfiles/
 
 .env
