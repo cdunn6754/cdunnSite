@@ -6,21 +6,14 @@ const Square = (props) => {
   
   const {
     marker,
-    makeMove
+    makeMoveWithId
   } = props;
   
-  
-  const handleClick = (e) => {
-    if (marker) {
-      return null
-    } else {
-      makeMove();
-    }
-  }
+  const displayMarker = marker === "E" ? " " : marker;
   
   return (
-    <SquareContent onClick={() => handleClick}>
-      
+    <SquareContent onClick={makeMoveWithId}>
+      {displayMarker}
     </SquareContent>
     
   )
@@ -28,16 +21,22 @@ const Square = (props) => {
 
 
 const SquareContent = styled.div`
-  border: 5px solid black;
+  border: 5px solid #333333;
   border-radius: 0.3em;
   min-width: 6rem;
   min-height: 6rem;
   cursor: pointer;
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  color: ${props => props.winner ? "red" : "black"};
 `
 
 
 Square.propTypes = {
   marker: PropTypes.string,
-  makeMove: PropTypes.func,
+  makeMoveWithId: PropTypes.func,
+  winner: PropTypes.bool
 }
 export default Square;
