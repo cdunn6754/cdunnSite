@@ -18,6 +18,7 @@ import cdunnSite.localsettings as ls
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = ls.BASE_DIR
 TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
+TTT_BUILD_DIR = os.path.join(BASE_DIR, "ticTacToe", "ttt-frontend", "build")
 
 
 LOGIN_REDIRECT_URL = "/"
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blogUser',
     'content',
+    'ticTacToe',
 ]
 
 MIDDLEWARE = [
@@ -62,7 +64,7 @@ ROOT_URLCONF = 'cdunnSite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR],
+        'DIRS': [TEMPLATE_DIR, TTT_BUILD_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
