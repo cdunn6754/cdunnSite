@@ -6,13 +6,14 @@ const Square = (props) => {
   
   const {
     marker,
-    makeMoveWithId
+    makeMoveWithId,
+    winner
   } = props;
   
   const displayMarker = marker === "E" ? " " : marker;
   
   return (
-    <SquareContent onClick={makeMoveWithId}>
+    <SquareContent onClick={makeMoveWithId} winner={winner} > 
       {displayMarker}
     </SquareContent>
     
@@ -21,10 +22,10 @@ const Square = (props) => {
 
 
 const SquareContent = styled.div`
-  border: 5px solid #333333;
+  border: 3px solid #333333;
   border-radius: 0.3em;
-  min-width: 6rem;
-  min-height: 6rem;
+  width: 6rem;
+  height: 6rem;
   cursor: pointer;
   font-size: 5rem;
   display: flex;

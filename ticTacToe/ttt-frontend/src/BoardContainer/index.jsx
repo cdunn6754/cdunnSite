@@ -18,7 +18,7 @@ const BoardContainer = () => {
       newBoard.splice(squareId, 1, humanMarker);
       setBoardArray(newBoard);
       setHumanTurn(!humanTurn);
-      setWinningIdxs(checkForWinner());
+      setWinningIdxs(checkForWinner(newBoard));
       checkForGameOver()
     }
   };
@@ -28,20 +28,20 @@ const BoardContainer = () => {
       setGameOver(true);
     }
   }
-  
-  const checkForWinner = () => {
+
+  const checkForWinner = (newBoard) => {
     for (let i = 0; i < 3; i++) {
       if (
-          boardArray[3*i] === boardArray[3*i + 1] &&
-          boardArray[3*i + 1] === boardArray[3*i + 2] &&
-          boardArray[3*i+2] !== 'E'
+          newBoard[3*i] === newBoard[3*i + 1] &&
+          newBoard[3*i + 1] === newBoard[3*i + 2] &&
+          newBoard[3*i+2] !== 'E'
       ) {
           // Return row idxs
           return [3*i, 3*i+1, 3*i+2];
       } else if (
-          boardArray[i] === boardArray[3 + i] &&
-          boardArray[3 + i] === boardArray[6 + i] &&
-          boardArray[6 + i] !== 'E'
+          newBoard[i] === newBoard[3 + i] &&
+          newBoard[3 + i] === newBoard[6 + i] &&
+          newBoard[6 + i] !== 'E'
       ) {
         // Return column idxs
         return [i, 3+i, 6+i];
@@ -50,16 +50,16 @@ const BoardContainer = () => {
     
     // Diagonals
     if (
-      boardArray[0] === boardArray[4] &&
-      boardArray[4] === boardArray[8] &&
-      boardArray[8] !== 'E'
+      newBoard[0] === newBoard[4] &&
+      newBoard[4] === newBoard[8] &&
+      newBoard[8] !== 'E'
     ) {
       // Diagonal
       return [0, 4, 8];
     } else if (
-      boardArray[2] === boardArray[4] &&
-      boardArray[4] === boardArray[6] &&
-      boardArray[6] !== 'E'
+      newBoard[2] === newBoard[4] &&
+      newBoard[4] === newBoard[6] &&
+      newBoard[6] !== 'E'
     ) {
       // Anti diagonal
       return [2, 4, 6]
