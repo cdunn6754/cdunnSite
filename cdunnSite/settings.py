@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
+    
     'blogUser',
     'content',
     'ticTacToe',
@@ -52,6 +54,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -150,3 +153,6 @@ X_FRAME_OPTIONS = ls.X_FRAME_OPTIONS
 
 # Nginx is configured to reroute to HTTPS
 SECURE_SSL_REDIRECT = ls.SECURE_SSL_REDIRECT
+
+# CORS
+CORS_ORIGIN_WHITELIST = ('localhost:3000', )
