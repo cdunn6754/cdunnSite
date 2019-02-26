@@ -11,7 +11,8 @@ const Board = (props) => {
     makeMove,
     humanTurn,
     gameOver,
-    winningIdxs
+    winningIdxs,
+    resetBoard
   } = props;
   
   const [message, setMessage] = useState("Try to beat the computer!");
@@ -28,12 +29,32 @@ const Board = (props) => {
     "Your turn meatbag",
   ]
   
+  const onDrawMessage = (
+    <span>
+      You almost did it!
+      <ResetA onClick={() => resetBoard()}>
+        Try again
+      </ResetA>
+      buddy.
+    </span>
+  )
+  
+  const onLossMessage = (
+    <span>
+      Good game
+      <ResetA onClick={() => resetBoard()}>
+        dummy
+      </ResetA>
+      .
+    </span>
+  )
+  
   // Change the board message based on who is playing now or has won
   useEffect(() => {
     if (gameOver && winningIdxs.length === 0) {
-      setMessage("You almost did it! Try again buddy.");
+      setMessage(onDrawMessage);
     } else if (winningIdxs.length === 3) {
-      setMessage("Good game dummy.");
+      setMessage(onLossMessage);
     } else {
       if (humanTurn) {
         setMessage(humanTurnComedy[Math.floor(Math.random() * humanTurnComedy.length)])
@@ -91,10 +112,18 @@ const Message = styled.h2`
   margin-bottom: 3rem;
 `
 
+const ResetA = styled.a`
+  text-decoration: underline;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+  cursor: pointer;
+`
+
 Board.propTypes = {
   message: PropTypes.string,
   boardArray: PropTypes.arrayOf(PropTypes.string),
   makeMove: PropTypes.func,
+  resetBoard: PropTypes.func,
   humanTurn: PropTypes.bool,
   winningIdxs: PropTypes.arrayOf(PropTypes.number),
   gameOver: PropTypes.bool

@@ -14,9 +14,10 @@ const BoardContainer = () => {
   useEffect(() => {
     // if it's the ais turn
     if (!humanTurn) {
+      const agent_marker = humanMarker === "X" ? "O" : "X"
       const data = {
         board_array: boardArray,
-        agent_marker: humanMarker === "X" ? "O" : "X"
+        agent_marker
       };
       fetch(
         API_URL, {
@@ -30,16 +31,23 @@ const BoardContainer = () => {
         }
       )
         .then(response => response.json())
-        .then(json => console.log(json.new_board))
+        .then(json => makeMove(json.next_move, agent_marker))
         .then(() => setHumanTurn(!humanTurn))
     }
   }, [humanTurn])
+  
+  const resetBoard = () => {
+    setBoardArray(Array(9).fill('E'));
+    setHumanTurn(true);
+    setGameOver(false);
+    setWinningIdxs([])
+  }
     
-  const makeMove = (squareId) => {
+  const makeMove = (squareId, marker=humanMarker) => {
     // Only make a move if they square is empty
     if (boardArray[squareId] === "E") {
       let newBoard = boardArray.slice();
-      newBoard.splice(squareId, 1, humanMarker);
+      newBoard.splice(squareId, 1, marker);
       setBoardArray(newBoard);
       setHumanTurn(!humanTurn);
       setWinningIdxs(checkForWinner(newBoard));
@@ -99,6 +107,7 @@ const BoardContainer = () => {
         humanTurn,
         winningIdxs,
         gameOver,
+        resetBoard
       }}
     />
 }
