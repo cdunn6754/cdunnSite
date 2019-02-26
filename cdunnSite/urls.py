@@ -21,8 +21,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from content.views import LandingPageView
-from ticTacToe.views import TTTView
-
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -32,5 +30,5 @@ urlpatterns = [
         name = "about_me"),
     url(r'^users/', include('blogUser.urls', namespace='blogUser')),
     url(r'^content/', include('content.urls', namespace='content')),
-    url(r'^tic-tac-toe/', TTTView.as_view(), name="ttt_view"),
+    url(r'^tic-tac-toe/', include('ticTacToe.urls', namespace='ticTacToe')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
