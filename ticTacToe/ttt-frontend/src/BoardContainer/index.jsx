@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Board from "../components/Board";
+import {API_URL} from "../urls";
 
 const BoardContainer = () => {
   
@@ -8,6 +9,26 @@ const BoardContainer = () => {
   const [humanTurn, setHumanTurn] = useState(true);
   const [winningIdxs, setWinningIdxs] = useState([]);
   const [gameOver, setGameOver] = useState(false);
+  
+  useEffect(() => {
+    // if it's the ais turn
+    if (!humanTurn) {
+      fetch(
+        API_URL, {
+          method:"POST",
+          mode: "cors",
+          headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({board_array: boardArray}),
+        }
+      )
+        .then(response => response.json())
+        .then(json => console.log(json.new_board))
+        .then(() => setHumanTurn(!humanTurn))
+    }
+  }, [humanTurn])
   
   const humanMarker = 'X';
   
@@ -19,12 +40,12 @@ const BoardContainer = () => {
       setBoardArray(newBoard);
       setHumanTurn(!humanTurn);
       setWinningIdxs(checkForWinner(newBoard));
-      checkForGameOver()
+      checkForGameOver(newBoard)
     }
   };
   
-  const checkForGameOver = () => {
-    if (!boardArray.includes('E')) {
+  const checkForGameOver = (newBoard) => {
+    if (!newBoard.includes('E') || checkForWinner(newBoard).length > 0) {
       setGameOver(true);
     }
   }
