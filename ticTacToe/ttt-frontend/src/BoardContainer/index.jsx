@@ -9,10 +9,15 @@ const BoardContainer = () => {
   const [humanTurn, setHumanTurn] = useState(true);
   const [winningIdxs, setWinningIdxs] = useState([]);
   const [gameOver, setGameOver] = useState(false);
+  const humanMarker = "X";
   
   useEffect(() => {
     // if it's the ais turn
     if (!humanTurn) {
+      const data = {
+        board_array: boardArray,
+        agent_marker: humanMarker === "X" ? "O" : "X"
+      };
       fetch(
         API_URL, {
           method:"POST",
@@ -21,7 +26,7 @@ const BoardContainer = () => {
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({board_array: boardArray}),
+          body: JSON.stringify(data),
         }
       )
         .then(response => response.json())
@@ -29,9 +34,7 @@ const BoardContainer = () => {
         .then(() => setHumanTurn(!humanTurn))
     }
   }, [humanTurn])
-  
-  const humanMarker = 'X';
-  
+    
   const makeMove = (squareId) => {
     // Only make a move if they square is empty
     if (boardArray[squareId] === "E") {
