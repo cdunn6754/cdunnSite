@@ -16,7 +16,7 @@ import os
 import cdunnSite.localsettings as ls
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = ls.BASE_DIR
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
 TTT_BUILD_DIR = os.path.join(BASE_DIR, "ticTacToe", "ttt-frontend", "build")
 
@@ -27,15 +27,26 @@ LOGIN_REDIRECT_URL = "/"
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ls.SECRET_KEY
+SECRET_KEY = 'pj@b*)3dzrqlfo!w3bw615+(f1s41tm58=k@o%wn%%di5m6g7k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = ls.DEBUG
+DEBUG = True
 
-ALLOWED_HOSTS = ls.ALLOWED_HOSTS
+ALLOWED_HOSTS = []
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
+STATIC_URL = '/static/'
+
+STATIC_ROOT = '/static/'
 # Application definition
+
+## Media files
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+MEDIA_URL = "/media/"
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -44,7 +55,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
     
     'blogUser',
     'content',
@@ -54,7 +64,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -86,7 +95,12 @@ WSGI_APPLICATION = 'cdunnSite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = ls.DATABASES
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 
 # Password validation
@@ -125,34 +139,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATICFILES_DIRS = ls.STATICFILES_DIRS
-
-STATIC_ROOT = ls.STATIC_ROOT
-
-STATIC_URL = ls.STATIC_URL
-
-## Media files
-MEDIA_ROOT = ls.MEDIA_ROOT
-
-MEDIA_URL = ls.MEDIA_URL
-
 ## Security Settings
 
-# Prevent MIME type sniffing, lock content type header
-SECURE_CONTENT_TYPE_NOSNIFF = ls.SECURE_CONTENT_TYPE_NOSNIFF
+# Prevent browser from MIME sniffing, lock content type header
+SECURE_CONTENT_TYPE_NOSNIFF = False
 
 # turn on xss attack filtering
-SECURE_BROWSER_XSS_FILTER = ls.SECURE_BROWSER_XSS_FILTER
+SECURE_BROWSER_XSS_FILTER = False
 
-SESSION_COOKIE_SECURE = ls.SESSION_COOKIE_SECURE
+SESSION_COOKIE_SECURE = False
 
+CSRF_COOKIE_SECURE = False
 
-CSRF_COOKIE_SECURE = ls.CSRF_COOKIE_SECURE
-
-X_FRAME_OPTIONS = ls.X_FRAME_OPTIONS
+X_FRAME_OPTIONS = 'DENY'
 
 # Nginx is configured to reroute to HTTPS
-SECURE_SSL_REDIRECT = ls.SECURE_SSL_REDIRECT
+SECURE_SSL_REDIRECT = False
 
-# CORS
-CORS_ORIGIN_WHITELIST = ('localhost:3000', )
+# Load local settings to overwrite the above
+try:
+    from cdunnSite.localsettings import *
+except ImportError:
+    print("Local settings not imported")
+    pass

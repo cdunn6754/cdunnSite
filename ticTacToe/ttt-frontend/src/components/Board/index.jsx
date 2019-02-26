@@ -15,7 +15,7 @@ const Board = (props) => {
     resetBoard
   } = props;
   
-  const [message, setMessage] = useState("Try to beat the computer!");
+  const [message, setMessage] = useState('');
   
   const computerComedy = [
     "thinking ...",
