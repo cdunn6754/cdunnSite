@@ -13,7 +13,7 @@ const Square = (props) => {
   const displayMarker = marker === "E" ? " " : marker;
   
   return (
-    <SquareContent onClick={makeMoveWithId} winner={winner} > 
+    <SquareContent onClick={makeMoveWithId} winner={winner} >
       {displayMarker}
     </SquareContent>
     
@@ -32,6 +32,7 @@ const SquareContent = styled.div`
   justify-content: center;
   align-content: center;
   color: ${props => props.winner ? "red" : "black"};
+  line-height: normal;
 `
 
 

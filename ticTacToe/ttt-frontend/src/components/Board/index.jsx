@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Square from "../Square";
+import './styles.css';
 
 const Board = (props) => {
   
@@ -32,7 +33,7 @@ const Board = (props) => {
   const onDrawMessage = (
     <span>
       You almost did it!
-      <ResetA onClick={() => resetBoard()}>
+      <ResetA id="underline-anchor" onClick={() => resetBoard()}>
         Try again
       </ResetA>
       buddy.
@@ -42,7 +43,7 @@ const Board = (props) => {
   const onLossMessage = (
     <span>
       Good game
-      <ResetA onClick={() => resetBoard()}>
+      <ResetA id="underline-anchor" onClick={() => resetBoard()}>
         dummy
       </ResetA>
       .
@@ -113,7 +114,6 @@ const Message = styled.h2`
 `
 
 const ResetA = styled.a`
-  text-decoration: underline;
   margin-left: 0.2em;
   margin-right: 0.2em;
   cursor: pointer;
