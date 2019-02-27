@@ -42,6 +42,7 @@
                 Content
               </a>
               <div class="dropdown-menu" aria-labelledby = "navbarDropdown">
+                <h6 class="dropdown-header">Writings</h6>
                 <a class="dropdown-item raleway" href="{% url 'content:post_list' %}">
                   Articles
                 </a>
@@ -50,6 +51,17 @@
                 </a>
                 <a class="dropdown-item raleway" href="{% static 'ClintDunn_Resume.pdf' %}">
                   Resume
+                </a>
+                <div class="dropdown-divider"></div>
+                <h6 class="dropdown-header">Projects</h6>
+                <a class="dropdown-item raleway" href="https://rereddit.clintdunn.org">
+                  reReddit
+                </a>
+                <a class="dropdown-item raleway" href="https://rereddit.api.clintdunn.org">
+                  reReddit api
+                </a>
+                <a class="dropdown-item raleway" href="{% url 'ticTacToe:ttt_view' %}">
+                  tic tac toe
                 </a>
               </div>
           </ul>
