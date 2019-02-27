@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import os
+import time
 from django.conf import settings
 from django.views.generic.base import TemplateView
 from django.views import View
@@ -20,7 +21,7 @@ class MinimaxApiView(View):
     An api for calling cpp minimax funcitonality for ttt ai
     """
         
-    def post(self, request):     
+    def post(self, request):
         data = json.loads(request.body.decode('utf-8'))
         next_move = self.get_next_move(
             ''.join(data.get("board_array")),
@@ -51,6 +52,7 @@ class MinimaxApiView(View):
         
         c_board_array = create_string_buffer(board_array.encode('utf-8'))
         c_agent_marker = c_char(agent_marker.encode('utf-8'))
-        
+        # make it take a little longer
+        time.sleep(1.5)
         return mm_lib.minimax(c_board_array, c_agent_marker)
         

@@ -24,7 +24,7 @@ const BoardContainer = () => {
           method:"POST",
           mode: "cors",
           headers: {
-            'Accept': 'application/json, text/plain, */*',
+            'Accept': 'application/json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(data),
@@ -45,7 +45,7 @@ const BoardContainer = () => {
     
   const makeMove = (squareId, marker=humanMarker) => {
     // Only make a move if they square is empty
-    if (boardArray[squareId] === "E") {
+    if (boardArray[squareId] === "E" && !gameOver) {
       let newBoard = boardArray.slice();
       newBoard.splice(squareId, 1, marker);
       setBoardArray(newBoard);
