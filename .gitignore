@@ -124,3 +124,5 @@ yarn-debug.log*
 yarn-error.log*
 /.changelog
 .npm/
+
+rsync_build.sh
