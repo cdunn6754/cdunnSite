@@ -69,7 +69,7 @@ const Board = (props) => {
   const squareList = boardArray.map((marker, idx) => (
     <Square
       marker={marker}
-      makeMoveWithId={() => makeMove(idx)}
+      makeMoveWithId={() => humanTurn ? makeMove(idx): null}
       key={idx}
       winner={winningIdxs.includes(idx)}
     />
