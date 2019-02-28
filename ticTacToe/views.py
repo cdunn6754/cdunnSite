@@ -53,6 +53,6 @@ class MinimaxApiView(View):
         c_board_array = create_string_buffer(board_array.encode('utf-8'))
         c_agent_marker = c_char(agent_marker.encode('utf-8'))
         # make it take a little longer
-        time.sleep(1.5)
+        time.sleep(0.75)
         return mm_lib.minimax(c_board_array, c_agent_marker)
         
