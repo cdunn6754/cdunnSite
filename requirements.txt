@@ -5,7 +5,7 @@ panflute==1.10.6
 Pillow==5.1.0
 psycopg2==2.7.5
 pytz==2018.5
-PyYAML==3.13
+PyYAML==5.1
 shutilwhich==1.1.0
 sqlparse==0.3.1
 uWSGI==2.0.17.1
